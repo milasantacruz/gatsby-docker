@@ -50,3 +50,20 @@ Once you're done working on your Gatsby website, and finished with development, 
 And make sure to add the build tag if you have updated your gatsby website.
 
 ``docker-compose -f docker-compose.prod.yml up --build``
+
+[Overview of docker-compose CLI] (https://docs.docker.com/compose/reference/)
+
+## Use Compose in Production
+
+When you define your app with Compose in development, you can use this definition to run your application in different environments such as CI, staging, and production.
+
+The easiest way to deploy an application is to run it on a single server, similar to how you would run your development environment. If you want to scale up your application, you can run Compose apps on a Swarm cluster.
+
+**Modify your Compose file for production**
+
+    - Removing any volume bindings for application code, so that code stays inside the container and can’t be changed from outside
+    - Binding to different ports on the host
+    - Setting environment variables differently, such as reducing the verbosity of logging, or to specify settings for external services such as an email server
+    - Specifying a restart policy like restart: always to avoid downtime
+    - Adding extra services such as a log aggregator
+
